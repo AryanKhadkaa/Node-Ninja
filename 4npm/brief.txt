@@ -1,0 +1,36 @@
+//
+  NPM and 3rd party packages
+//
+So far we have used the core modules and packages that are built within the node js environment like fs module. 
+
+Now then what if we need external libraries/packages to add some additional 
+features and functionalities to our website?
+
+-> In such case we can use the 3rd party packages like lodash, express etc.
+   We do this using npm. We install the needed 3rd party packages using npm.
+   NPM (Node Package Manager) is already installed to your pc when you install node js,
+   so you can direactly apply commands to install the desired libraries.
+
+-> You can install packages globally and locally,
+   
+   Globally: Installing globally will make sure that the package can be used around your computer and is accessible from any project.
+   For eg. nodemon : npm install -g nodemon
+
+   Locally: Installing any package locally means making it accessible to a bounded directory. Using it for project-specifing dependencies.
+   For eg: lodash : npm intall lodash 
+
+You can visit npmjs.com and browse the libraries of your choice and install it to your node website.
+
+ //
+   UNDERSTANDING: node modules, dependencies, pacakage.json....
+ //
+ You can see a node_modules folder here along with package.json and pacakag-lock.json
+
+ -> So, basically node_modules is a placeholder for the 3rd party packages you install. It contains all
+ the libraries and their code bases for you to use its features.
+ -> Package.json is where basically the dependencies to your code/website is stored/maintained. It contains all the scripts
+ in json format for your project to function. Once you install a dependency, it automatically appears on the package.json file
+ -> Package-lock.json is where different version of dependencies or packages is maintained.
+
+ We dont actually go and mess around with these files/folders. We might need to alter pacakage.json at times but mostly they are automated
+ when packages are installed.
