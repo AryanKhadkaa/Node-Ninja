@@ -1,6 +1,7 @@
 //
   NPM and 3rd party packages
 //
+
 So far we have used the core modules and packages that are built within the node js environment like fs module. 
 
 Now then what if we need external libraries/packages to add some additional 
@@ -20,6 +21,9 @@ features and functionalities to our website?
    For eg: lodash : npm intall lodash 
 
 You can visit npmjs.com and browse the libraries of your choice and install it to your node website.
+
+
+
 
  //
    UNDERSTANDING: node modules, dependencies, pacakage.json....

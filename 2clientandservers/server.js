@@ -1,4 +1,8 @@
-// Here we need to build our own server that interacts with the client( listens to reuestions coming from the browser) and decides what responses to send, all manually 
+
+
+// CREATING A SERVRE AND MANAGING REQUESTS AND RESPONSES
+
+// Using node, we build our own server that interacts with the client( listens to reuestions coming from the browser) and decides what responses to send, all manually 
 // unlike PHP, where we dont have to create a server manually, but rather is provided by other tools like Apache
 
 // we require a core node module i.e http module that can handle HTTP requests and send HTTP responses
@@ -51,6 +55,11 @@ switch(req.url){
     case '/about':
         path+='about.html';
         res.statusCode = 200;
+        break;
+    case '/about-us':  //redirecting to /about if /about-us is typed in the url
+        res.statusCode = 301
+        res.setHeader('Location','/about');
+        res.end();
         break;
     default:
         path+='404.html'
