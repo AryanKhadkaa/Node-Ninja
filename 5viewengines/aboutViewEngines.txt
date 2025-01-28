@@ -1,5 +1,5 @@
 A view engine is a tool or library in web dev that helps generate HTMPL pages dynamically.
-It is mainly used in SSR(Server Side Rendering) to combine template files with data and profuce HTML at the server 
+It is mainly used in SSR(Server Side Rendering) to combine template files with data and produce HTML at the server 
 and send it to the browser all-ready, the content is rendered at server not on the frontend, the final HTML is viewed in the frontend sent by the server.
 
 In Node js, view engines are used to generate dynamic HTML content by rendering templates.

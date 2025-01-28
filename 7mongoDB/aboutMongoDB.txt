@@ -1,1 +1,50 @@
+What is MongoDB?
 
+MongoDB is a NoSQL database that stores data in a flexible, JSON-like format (BSON). 
+It is schema-less, scalable, and efficient for handling unstructured or semi-structured data.
+
+By NoSQL db, it means that it is a non-relational db which allows handling large volumes of data , 
+unstructured/semi-structured(like json data from APIs) and dynamic schemas.
+
+-> non-relational: Data in json are on un/semi-structured. Not all data in a collection need to have same fields
+
+   1  {
+    "id": 1,
+    "name": "Aryan",
+    "age": 25
+    }
+ 
+   2  {
+    "id": 2,
+    "username": "EagerRadical",
+    "hobbies": ["coding", "futsal"]
+    }
+
+    3  {
+    "id": 3,
+    "name": "Aryan",
+    "address": {
+        "city": "Kathmandu",
+        "country": "Nepal"
+    }
+  }
+
+-> dynamic schema: meaning that is has no fixed schema for a collection in DB.
+   i.e Unlike relational databases, there’s no need to predefine all fields.
+  More about scheme and model is shown in app.js and blog.js, where we create a schema and model for our collection in MongoDB using mongoose.
+
+
+So, Non-Relational DBs are databases that do not use the traditional 
+ row-and-column table structure found in relational databases (like MySQL or PostgreSQL). 
+ Instead, they use flexible data models suited to specific use cases, such as documents, key-value pairs, graphs, or wide-columns.
+
+Now that we know about SQL and NoSQL DBs, and MongoDB.
+We go to mongoDB Atlas, set up our account and move onto app.js where we use mongoose to interact with mongoDB.
+
+
+Mongoose: Mongoose is an ODM(object Document Mapping) library, meaning that it wrpas the standard MongoDB API,
+          and provies us with a much easier way to connect with the DB.
+
+          It does this by allowing us to create simple data models which have database query methods to create, get delete and update the database docs.
+
+          In mongoose, we create schemas and models to interact with DB collections through our server.
