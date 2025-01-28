@@ -16,9 +16,14 @@ mongoose.connect(dbURI) // connection to the particular DB
 .then((result)=> app.listen(3000) ) // we start listening for res only if DB connection is established
 .catch((err)=>console.log(err))
 
- // now we need to create a schema and a model for our blogs in blog.js
+ // now we need to create a schema and a model for our blogs in blog.
+ // which is done in blogs.js
+
+ //register view engine
 app.set('view engine', 'ejs');
 
+ //middleware and static files
+ app.use(express.urlencoded()); // this basically takes all the url encoded data that alongs for a ride (from the url), and passes it into an object that we can use on a request object.
 //routes
 
 app.get('/',(req,res)=>{
@@ -29,17 +34,10 @@ app.get('/',(req,res)=>{
   ];
   res.render('index',{title:'Home',blogs})
 })
-
-app.get('/blogs',(req,res)=>{
-  Blog.find().sort({createdAt: -1}) //filtering b created date and -1 indicated descending order
-  .then((result)=>{
-    console.log(result)
-    res.render('blogs',{title:'Blogs', blogs:result})
-
-  })
-  .catch((err)=>console.log(err))
-
+app.get('/about',(req,res)=>{
+  res.render('about',{title:'about'})
 })
+
  // now that we have created a schema and model for our blog, we need to get and save data from and to DB
 
 
@@ -49,7 +47,8 @@ app.get('/blogs',(req,res)=>{
  //blog routes
 
  // to send data to DB
-  app.get('/createBlogs',(req,res)=>{
+  app.get('/add-blogs',(req,res)=>{
+ 
     console.log(req.url)
        const blog = new Blog({
         title:'new blogss',
@@ -68,8 +67,8 @@ app.get('/blogs',(req,res)=>{
 
   // to retrieve data from DB
 
-  app.get('/createBlogs',(req,res)=>{
-    Blog.find() //gives aus all the docs in our collection i.e blogs and this is also asynchornous and gives us a promies
+  app.get('/showBlogs',(req,res)=>{
+    Blog.find() //gives us all the docs in our collection i.e blogs and this is also asynchornous and gives us a promies
     .then((result)=>{
       res.send(result);
     })
@@ -85,3 +84,32 @@ app.get('/blogs',(req,res)=>{
     .catch((err)=>
     console.log(err))
   })
+// to retrieve data and display 
+app.get('/blogs',(req,res)=>{
+  Blog.find().sort({createdAt: -1}) //filtering by created date and -1 indicated descending order
+  .then((result)=>{
+    console.log(result)
+    res.render('blogs',{title:'Blogs', blogs:result})
+
+  })
+  .catch((err)=>console.log(err))
+
+})
+
+// from lesson 8
+
+app.post('/blogs',(req,res)=>{
+  const blog = new Blog(req.body); //we create a new instance of our collection and the incoming data frome the middleware is now sent to the DB 
+  blog.save()
+  .then((result)=>{
+      res.redirect('/blogs');
+  })
+  .catch((err)=>
+  console.log(err)
+)
+})
+
+app.get('/blogs/createBlogs',(req,res)=>{
+  res.render('createBlogs',{title:'Create new blog'})
+
+})
