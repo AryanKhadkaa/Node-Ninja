@@ -1,0 +1,40 @@
+<html lang="en>
+
+<!-- <%- include("./partials/head.ejs") %> 
+<body>
+    <%- include("./partials/navbar.ejs")%>
+
+    <div class="details">
+     <% if(blog){ %>
+        <h1><%= blog.title%></h1>
+        <p><%= blog.snippet%></p>
+        <a class="delete" href="" data-doc="<%= blog.id%>">delete</a>
+     <% } else { %>
+        <p>Page cannot be found, might be deleted or wrong url.</p>
+     <% } %>
+    
+    </div>
+    <%- include('./partials/footer.ejs')%>
+
+    <% if (blog) { %>
+    <script>
+        const trashcan = document.querySelector('a.delete');
+
+        trashcan.addEventListener('click',(e)=>{
+            const endpoint = `/blogs/${trashcan.dataset.doc}`;
+            
+            fetch(endpoint,{
+                method:'DELETE'
+            })
+            .then((response)=> 
+                response.json())
+            .then((data)=>
+               window.location.href = data.redirect)
+            .catch((err)=>{
+                console.log(err);
+            })
+        })
+    </script>
+    <% } %>
+</body>
+</html>

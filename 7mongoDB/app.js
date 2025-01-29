@@ -24,7 +24,9 @@ app.set('view engine', 'ejs');
 
  //middleware and static files
  app.use(express.urlencoded()); // this basically takes all the url encoded data that alongs for a ride (from the url), and passes it into an object that we can use on a request object.
-//routes
+ app.use(express.static('public'))
+
+ //routes
 
 app.get('/',(req,res)=>{
   const blogs = [
@@ -84,7 +86,8 @@ app.get('/about',(req,res)=>{
     .catch((err)=>
     console.log(err))
   })
-// to retrieve data and display 
+// to retrieve data and display  (we can also filter data)
+
 app.get('/blogs',(req,res)=>{
   Blog.find().sort({createdAt: -1}) //filtering by created date and -1 indicated descending order
   .then((result)=>{
@@ -112,4 +115,42 @@ app.post('/blogs',(req,res)=>{
 app.get('/blogs/createBlogs',(req,res)=>{
   res.render('createBlogs',{title:'Create new blog'})
 
+})
+
+//Route parameters : to access single docs/data to get or delete
+
+// The variable part of the route that may change value are route parameter
+   //localhost:3000/blogs/:id
+   //localhost:3000/blogs/12345 
+   //localhost:3000/blogs/hello
+
+
+// Request type : localhost:3000/blogs/:id    GET
+
+app.get('/blogs/:id',(req,res)=>{
+  const id = req.params.id;
+  //console.log(id)
+  Blog.findById(id)
+  .then((result)=>{
+    res.render('details',{title:'Blog Details', blog:result})
+  })
+   .catch((err)=>
+  console.log(err))
+})
+
+// Request type : localhost:3000/blogs/:id    DELETE
+
+app.delete('/blogs/:id',(req,res)=>{
+  const id = req.params.id;
+
+  Blog.findByIdAndDelete(id)
+  .then(() =>{
+    res.json({redirect:'/blogs'})
+  })
+  .catch((err)=>
+  console.log(err))
+})
+
+app.use((req,res)=>{
+  res.render('404',{title:'error'})
 })
