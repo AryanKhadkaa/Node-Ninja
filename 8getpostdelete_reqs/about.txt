@@ -1,0 +1,13 @@
+So far, we've only used get request in our series, which is typically to get resources from the server whether it's a json data from the DB or a full webpage.
+
+And there are other types of requests too,
+
+1- GET : reuests to get a resources
+2- POST : requests a create new data (e.g a new blog)
+3- DELETE : requests to delete data (e.g delete a blog)
+4- PUT : requests to update data (e.g update a blog)
+
+
+As we are already familiar with get requests, we now will use othe reqs methods in our previoslu made blog site.
+
+The used code/sources will be present in the the lesson 7 mongoDB.

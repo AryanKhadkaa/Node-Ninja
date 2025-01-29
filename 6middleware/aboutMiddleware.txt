@@ -1,0 +1,7 @@
+
+   // WHAT IS MIDDLEWARE?
+
+->Middleware is basically name for any code that runs(on the server) between the getting a req and sending a response. 
+->So, when a request is sent from the browser, any code that runs before sending a response is a middleware code. We can see it visually in the middleware.png file.
+->We generally use .use method (app.use(func)) as our middleware code, and we have seen that before in our 404 responses.
+->There can we multiple middleware functions that runs on the server, as shown in middleware2.png 

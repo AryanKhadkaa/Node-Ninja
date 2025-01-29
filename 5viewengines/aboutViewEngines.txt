@@ -1,0 +1,22 @@
+A view engine is a tool or library in web dev that helps generate HTMPL pages dynamically.
+It is mainly used in SSR(Server Side Rendering) to combine template files with data and produce HTML at the server 
+and send it to the browser all-ready, the content is rendered at server not on the frontend, the final HTML is viewed in the frontend sent by the server.
+
+In Node js, view engines are used to generate dynamic HTML content by rendering templates.
+View engines allows us to embed variables, loops etv within HTML to create dynamic pages.
+
+These engines allow you to pass data from your server-side code (like Express) into templates and render HTML dynamically.
+For example, with Express, you set a view engine using app.set('view engine', 'ejs') and use res.render('template', data) to render a view.
+
+Here, "template" is the html file and "data" is the data from the client/frontend or any other specified data passed to the html to use and render it dynamically.
+
+With view engines, you don’t need to build HTML content from scratch every time.
+They help reduce the amount of redundant code and allow reusable components or partial views.
+
+Some popular view engines are : EJS(Embedded JS) , pug , handlebars
+
+// Here, we learn about EJS, as it is easy and very useful
+
+
+Also, client-side rendering frameworks like React, Angular, and Vue.js have somewhat reduced the need for view engines in single-page applications (SPAs).
+ These frameworks manage dynamic content on the client-side, and they don't rely on server-side view engines to render HTML. Instead, they send JSON data to the frontend, and the frontend dynamically builds and updates the UI.
